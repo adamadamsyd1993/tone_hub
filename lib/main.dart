@@ -10,6 +10,11 @@ void main() {
 }
 
 class my_music extends StatefulWidget {
+  void playMusic() {
+    final player = AudioCache();
+    player.play('nokia.mp3');
+  }
+
   @override
   _my_musicState createState() => _my_musicState();
 }
@@ -55,14 +60,7 @@ class _my_musicState extends State<my_music> {
                     onPrimary: Colors.black, // foreground
                   ),
                   onPressed: () {
-                    //
-                    /////
-                    /////
-                    ///
-                    ///
-                    final player = AudioCache();
-                    player.play('nokia.mp3');
-                    // print('nokia button pressed');
+                    playMusic();
                   },
                   child: Text('Nokia'),
                 ),
@@ -75,9 +73,7 @@ class _my_musicState extends State<my_music> {
                     onPrimary: Colors.black, // foreground
                   ),
                   onPressed: () {
-                    final player = AudioCache();
-                    player.play('samsung.mp3');
-                    // print('Samsung button pressed');
+                    playMusic();
                   },
                   child: Text(
                     'Samsung',
