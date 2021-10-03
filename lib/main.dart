@@ -10,16 +10,33 @@ void main() {
 }
 
 class my_music extends StatefulWidget {
-  void playMusic() {
-    final player = AudioCache();
-    player.play('nokia.mp3');
-  }
-
   @override
   _my_musicState createState() => _my_musicState();
 }
 
 class _my_musicState extends State<my_music> {
+  void playMusic(int numMusic) {
+    print('the left button');
+    final player = AudioCache();
+
+    player.play('ton$numMusic.mp3');
+  }
+
+  Card theButton(String ButtonName, int mNUmber) {
+    return Card(
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Colors.deepPurple[400], // background
+          onPrimary: Colors.black, // foreground
+        ),
+        onPressed: () {
+          playMusic(mNUmber);
+        },
+        child: Text(ButtonName),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,34 +70,9 @@ class _my_musicState extends State<my_music> {
           ),
           Row(
             children: [
-              Card(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.deepPurple[400], // background
-                    onPrimary: Colors.black, // foreground
-                  ),
-                  onPressed: () {
-                    playMusic();
-                  },
-                  child: Text('Nokia'),
-                ),
-              ),
+              theButton('Nokia', 1),
               SizedBox(width: 180),
-              Card(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.deepPurple[400], // background
-                    onPrimary: Colors.black, // foreground
-                  ),
-                  onPressed: () {
-                    playMusic();
-                  },
-                  child: Text(
-                    'Samsung',
-                    style: TextStyle(fontSize: 15),
-                  ),
-                ),
-              ),
+              theButton('Samsung', 2)
             ],
           )
         ],
